@@ -1,36 +1,47 @@
 from pydantic import BaseModel
-from datetime import datetime
 from typing import Optional
+from datetime import datetime
 
-class ThreatAlertBase(BaseModel):
-    source_ip: str
-    dest_ip: str
-    port: int
-    protocol: str
-    threat_type: str
-    is_suspicious: bool
-    confidence: float
-    raw_log: str
+# User schemas
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
 
-class ThreatAlertCreate(ThreatAlertBase):
-    pass
-
-class ThreatAlertResponse(ThreatAlertBase):
+class UserOut(BaseModel):
     id: int
-    timestamp: datetime
+    username: str
+    email: str
+    created_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True
 
-class UserCreate(BaseModel):
+class UserLogin(BaseModel):
     username: str
     password: str
 
-class UserResponse(BaseModel):
-    id: int
-    username: str
-    is_active: bool
+# Alert schemas
+class AlertCreate(BaseModel):
+    title: str
+    description: str
+    severity: str
 
+class AlertOut(BaseModel):
+    id: int
+    title: str
+    description: str
+    severity: str
+    user_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+# Token schemas
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
