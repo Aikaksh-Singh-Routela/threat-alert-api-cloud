@@ -11,6 +11,9 @@
 
 A **production-ready REST API** for managing cybersecurity threat alerts with secure JWT authentication. Built with FastAPI for high performance and automatic API documentation.
 
+🔗 Links
+GitHub: threat-alert-api
+
 ### Key Features
 
 | Feature | Description |
@@ -149,9 +152,6 @@ Once running, visit:
 Swagger UI: http://localhost:8000/docs
 
 ReDoc: http://localhost:8000/redoc
-
-🔗 Links
-GitHub: threat-alert-api
 
 📄 License
 MIT License
